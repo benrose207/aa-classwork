@@ -1,6 +1,7 @@
 require_relative 'p04_linked_list'
 require "byebug"
 class HashMap
+  include Enumerable
   attr_accessor :count
 
   def initialize(num_buckets = 8)
@@ -16,6 +17,7 @@ class HashMap
     if self.include?(key)
       bucket(key).update(key, val)
     else
+      resize! if self.count == num_buckets
       bucket(key).append(key, val)
       self.count += 1
     end
@@ -31,17 +33,16 @@ class HashMap
   end
 
   def each(&prc)
-    debugger
-    @store.each { |bucket| bucket.each(&prc) }
+    @store.each { |bucket| bucket.each { |node| prc.call(node.key, node.val) } }
   end
 
   # uncomment when you have Enumerable included
-  # def to_s
-  #   pairs = inject([]) do |strs, (k, v)|
-  #     strs << "#{k.to_s} => #{v.to_s}"
-  #   end
-  #   "{\n" + pairs.join(",\n") + "\n}"
-  # end
+  def to_s
+    pairs = inject([]) do |strs, (k, v)|
+      strs << "#{k.to_s} => #{v.to_s}"
+    end
+    "{\n" + pairs.join(",\n") + "\n}"
+  end
 
   alias_method :[], :get
   alias_method :[]=, :set
@@ -53,6 +54,15 @@ class HashMap
   end
 
   def resize!
+    new_size = num_buckets * 2
+    new_store = Array.new(new_size) { LinkedList.new }
+
+    self.each do |key, value|
+      idx = key.hash % new_size
+      new_store[idx].append(key, value)
+    end
+
+    @store = new_store
   end
 
   def bucket(key)
