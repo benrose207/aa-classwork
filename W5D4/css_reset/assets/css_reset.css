@@ -1,0 +1,16 @@
+body, header, nav, ul, a, aside, h2, section, h1, figure, 
+p, ol, form, footer {
+    margin:0;
+    padding:0;
+    border:0;
+    font-family:inherit;
+    font-weight:inherit;
+    list-style:none;
+    list-style: height 1.5em;
+}
+figure {
+    width:500px;
+}
+img {
+    width:inherit;
+}
