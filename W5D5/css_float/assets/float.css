@@ -80,7 +80,7 @@ h2 + .user_review {
 }
 
 nav {
-    display: inline-block;
+    float: right;
 }
 
 nav ul li {
@@ -94,16 +94,10 @@ nav ul li a {
 
 body {
     margin: 0 auto; /* Common Centering Technique */
-    width: 900px;
-}
-
-section {
-    display: inline-block;
-    vertical-align: top;
+    width: 80%;
 }
 
 aside {
-    margin-right: 15px;
     display: inline-block;
 }
 
@@ -127,23 +121,4 @@ textarea {
 
 label {
   display: block;
-}
-
-nav {
-  float: right;
-  display: inline-block;
-}
-
-.col {
-  float: left;
-  padding-right: 10px;
-  box-sizing: border-box;
-}
-
-.col-1 {
-  width: 30%;
-}
-
-.col-2 {
-  width: 60%;
 }
