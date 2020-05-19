@@ -1,0 +1,13 @@
+<h1>Ready to Rent a Cat?</h1>
+<form action=" <%= users_url %>" method="POST" >
+<label>Username: 
+<input type="text" name="user[username]" value="<%= @user.username %>"></label>
+<br>
+<br>
+<label>Password: 
+<input type="password" name="user[password]"></label>
+<br>
+<br>
+<input type="submit" value="Sign up!">
+
+</form>
