@@ -2,11 +2,27 @@
 
 <section>
 
-<ul>
-    <li>Band: <%= @album.band.name %></li>
-    <li>Year: <%= @album.year %></li>
-    <li>Live?: <%= @album.live %></li>
-</ul>
+<table>
+    <thead>
+        <tr>
+            <th colspan="2">Album Details</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Band</td>
+            <td><%= @album.band.name %></td>
+        </tr>
+        <tr>
+            <td>Year</td>
+            <td><%= @album.year %></td>
+        </tr>
+        <tr>
+            <td>Recording Type</td>
+            <td><%= @album.live ? "Live" : "Studio" %></td>
+        </tr>
+    </tbody>
+</table>
 
    <a href="<%= edit_album_url(@album) %>">Edit Album</a>
    <a href="<%= band_url(@album.band_id) %>">View Band</a>
