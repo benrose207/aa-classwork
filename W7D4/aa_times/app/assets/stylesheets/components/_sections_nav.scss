@@ -1,0 +1,26 @@
+.sections-header {
+  border-bottom: 1px solid $light-gray;
+}
+
+.sections-nav {
+    width: 70%;
+    margin: 10px auto;
+}
+
+.sections-ul {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.sections-ul button {
+    background: none;
+    color: black;
+    padding: 0px;
+    font-weight: normal;
+    text-transform: capitalize;
+}
+
+.sections-ul button:hover {
+    background-color: $light-gray;
+}
