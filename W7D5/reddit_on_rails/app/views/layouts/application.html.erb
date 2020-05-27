@@ -29,13 +29,13 @@
       </ul>
     </header>
 
-    <% if flash[:errors] %>
-      <ul>
+  <% if flash[:errors] %>
+    <ul class="errors">
         <% flash[:errors].each do |error| %>
           <li><%= error %></li>
         <% end %>
-      </ul>
-    <% end %>
+    </ul>
+  <% end %>
 
     <%= yield %>
   </body>

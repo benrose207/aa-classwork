@@ -1,0 +1,13 @@
+<h1><%= @comment.content %></h1>
+
+<form action="<%= comments_url %>" method="post">
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+    <input type="hidden" name="comment[parent_comment_id]" value=<%= params[:id] %>>
+
+    <label>Reply:
+    <br> 
+        <textarea name="comment[content]"></textarea>
+    </label>
+
+    <input type="submit" value="Publish">
+</form>

@@ -14,8 +14,11 @@
 <a href=<%= new_post_comment_url(@post) %>>Comment on this post!</a>
 
 <ul>
-    <% @post.comments.each do |comment| %>
-        <li>(<%= comment.id %>) <%= comment.content %></li>
+    <% @post.comments.where(parent_comment_id: nil).each do |comment| %>
+        <li>(<%= comment.id %>) <a href="<%= comment_url(comment) %>"><%= comment.content %></a></li>
+        
+        <%= render 'comment', comment: comment %>
+        
     <% end %>
 </ul>
 
