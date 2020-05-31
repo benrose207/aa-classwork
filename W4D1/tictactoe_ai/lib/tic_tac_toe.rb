@@ -206,8 +206,8 @@ class ComputerPlayer
 end
 
 if __FILE__ == $PROGRAM_NAME
-  puts "Play the dumb computer!"
-  hp = HumanPlayer.new("Ned")
+  puts "Play the computer!"
+  hp = HumanPlayer.new("Human")
   cp = ComputerPlayer.new
 
   TicTacToe.new(hp, cp).run

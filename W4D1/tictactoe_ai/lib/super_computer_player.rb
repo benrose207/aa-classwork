@@ -15,8 +15,8 @@ class SuperComputerPlayer < ComputerPlayer
 end
 
 if __FILE__ == $PROGRAM_NAME
-  puts "Play the brilliant computer!"
-  hp = HumanPlayer.new("Liz")
+  puts "Play the computer!"
+  hp = HumanPlayer.new("Human")
   cp = SuperComputerPlayer.new
 
   TicTacToe.new(hp, cp).run
