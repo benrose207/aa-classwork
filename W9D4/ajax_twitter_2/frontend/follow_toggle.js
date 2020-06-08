@@ -24,20 +24,16 @@ class FollowToggle {
         event.preventDefault();
         if (this.followState === "followed") {
             this.followState = "unfollowing";
-            debugger
             this.render();
             APIUtil.unfollowUser(this.userId).then(() => {
                     this.followState = "unfollowed";
-                    debugger
                     this.render();
                 });
         } else {
             this.followState = "following";
-            debugger
             this.render();
             APIUtil.followUser(this.userId).then(() => {
                     this.followState = "followed";
-                    debugger
                     this.render();
                 });
         }

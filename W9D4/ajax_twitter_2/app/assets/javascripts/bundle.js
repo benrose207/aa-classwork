@@ -113,6 +113,16 @@ const APIUtil = {
             data: queryVal
         })
     },
+
+    createTweet: formContents => {
+        return $.ajax({
+            url: "/tweets",
+            method: "POST",
+            dataType: "JSON",
+            data: formContents
+        })
+
+    }
 };
 
 module.exports = APIUtil;
@@ -152,20 +162,16 @@ class FollowToggle {
         event.preventDefault();
         if (this.followState === "followed") {
             this.followState = "unfollowing";
-            debugger
             this.render();
             APIUtil.unfollowUser(this.userId).then(() => {
                     this.followState = "unfollowed";
-                    debugger
                     this.render();
                 });
         } else {
             this.followState = "following";
-            debugger
             this.render();
             APIUtil.followUser(this.userId).then(() => {
                     this.followState = "followed";
-                    debugger
                     this.render();
                 });
         }
@@ -173,6 +179,54 @@ class FollowToggle {
 }
 
 module.exports = FollowToggle;
+
+/***/ }),
+
+/***/ "./frontend/tweet_compose.js":
+/*!***********************************!*\
+  !*** ./frontend/tweet_compose.js ***!
+  \***********************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+const APIUtil = __webpack_require__(/*! ./api_util */ "./frontend/api_util.js");
+
+class TweetCompose {
+    constructor (el) {
+        this.$el = $(el);
+
+        this.$el.on("submit", this.submit.bind(this));
+    }
+
+    submit (event) {
+        event.preventDefault();
+        const formContents = this.$el.serializeJSON();
+
+        $(":input").each((idx, el) => {
+            $(el).prop("disabled", true);
+        })
+
+        APIUtil.createTweet(formContents).then(this.handleSuccess.bind(this));
+    }
+
+    clearInput () {
+        $("textarea, select").each((idx, el) => {
+            $(el).val("");
+        });
+    }
+
+    handleSuccess(res) {
+        this.clearInput();
+
+        $(":input").each((idx, el) => {
+            $(el).prop("disabled", false);
+        })
+
+        // const $ul = ;
+    }
+}
+
+module.exports = TweetCompose;
 
 /***/ }),
 
@@ -185,6 +239,7 @@ module.exports = FollowToggle;
 
 const FollowToggle = __webpack_require__(/*! ./follow_toggle.js */ "./frontend/follow_toggle.js");
 const UsersSearch = __webpack_require__(/*! ./users_search */ "./frontend/users_search.js");
+const TweetCompose = __webpack_require__(/*! ./tweet_compose */ "./frontend/tweet_compose.js");
 
 $(() => {
     $("button.follow-toggle").each((idx, el) => {
@@ -193,6 +248,10 @@ $(() => {
 
     $("nav.users-search").each((idx, el) => {
         new UsersSearch(el);
+    });
+
+    $("form.tweet-compose").each((idx, el) => {
+        new TweetCompose(el);
     });
 })
 

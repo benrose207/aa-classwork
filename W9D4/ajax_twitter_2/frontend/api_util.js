@@ -18,6 +18,16 @@ const APIUtil = {
             data: queryVal
         })
     },
+
+    createTweet: formContents => {
+        return $.ajax({
+            url: "/tweets",
+            method: "POST",
+            dataType: "JSON",
+            data: formContents
+        })
+
+    }
 };
 
 module.exports = APIUtil;
