@@ -1,6 +1,4 @@
-window.addEventListener("scroll", () => {
-  debounce(slideImages)();
-});
+window.addEventListener("scroll", debounce(slideImages));
 
 function debounce(func, wait = 20, immediate = true) {
   let timeout;

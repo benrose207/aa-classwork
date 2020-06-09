@@ -13,4 +13,4 @@ export const htmlGenerator = (string, htmlElement) => {
     htmlElement.appendChild(p);
 };
 
-htmlGenerator('I <3 Vanilla DOM manipulation.', partyHeader);
+htmlGenerator('Welcome To the Pocket Project Marathon!', partyHeader);
