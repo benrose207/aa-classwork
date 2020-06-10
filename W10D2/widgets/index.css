@@ -1,0 +1,21 @@
+body {
+    font-family: 'Metal Mania';
+    margin: inherit; 
+}
+
+.time-ele {
+margin: 0px; 
+display: flex;
+justify-content: space-between;   
+}
+
+.clock {
+  width: 40%; 
+  margin: 30px auto; 
+  background-color: pink; 
+  padding: 15px; 
+}
+
+.h1 {
+  margin: 0px; 
+}
