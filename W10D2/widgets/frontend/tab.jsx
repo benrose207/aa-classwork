@@ -2,7 +2,7 @@ import React from 'react';
 
 export default class Tab extends React.Component {
     constructor (props) {
-        super()
+        super(props)
         this.state = { selected: 0 }
     }
 
@@ -12,16 +12,17 @@ export default class Tab extends React.Component {
 
     render () {
     //   debugger 
-        const selIdx = this.state.selected;
+        const { tabs } = this.props
+        const {selected} = this.state;
         return (
-            <>
-                <ul>
-                    {this.props.tabs.map((ele, idx) => {
-                        return(<h1 onClick={() => this.clickHandler(idx)} key={idx}>{ele.title}</h1>)
-                    })}
+            <div className="tabs">
+                <ul className="tab-list">
+                    {tabs.map((ele, idx) => (
+                        <li onClick={() => this.clickHandler(idx)} key={idx}>{ele.title}</li>
+                    ))}
                 </ul>
-                <article>{this.props.tabs[selIdx].content}</article>
-            </>
+                <article>{tabs[selected].content}</article>
+            </div>
         )
     }
 }

@@ -28,7 +28,7 @@ export default class Clock extends React.Component {
 
         return (
           <div className="clock">
-            <h1>Time's Up</h1>
+            <h1>Clock</h1>
             <div className="time-ele">
                 <p>Time:</p> 
                 <p>{hours}:{mins}:{secs} PST</p>
