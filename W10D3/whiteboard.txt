@@ -1,0 +1,55 @@
+function stringToCharacters(string){
+  const symbols = () ={
+    para: ['(',')'],
+    square: ['[',']'],
+    curly: ['{','}']
+  }
+  let chars = string.split('')
+
+  for(let i = 0; i< chars.length; i++){
+    if (symbols.includes(chars[i])) {
+
+    }
+  }
+}
+
+Problem #2
+You are a product manager and currently leading a team to develop a new product. Unfortunately, the latest version of your product fails the quality check. Since each version is developed based on the previous version, all the versions after a bad version are also bad.
+Suppose you have n versions [1, 2, ..., n] and you want to find out the first bad one, which causes all the following ones to be bad.
+You are given an API bool isBadVersion(version) which will return whether version is bad. Implement a function to find the first bad version. You should minimize the number of calls to the API.
+Example:
+Given n = 5, and version = 4 is the first bad version.
+call isBadVersion(3) -> false
+call isBadVersion(5) -> true
+call isBadVersion(4) -> true
+Then 4 is the first bad version. 
+
+[1,2,3,4,5]
+
+whether current target return true when passed into the API
+If it does not, then search on the right. 
+If it does return true, then search on the left -- would need to figure out how to pass that version back up the recursive stack, especially if the first target is actually the one we want. 
+
+const versions = [];
+
+for (let i = 1, i <=n; i ++) {
+    version.push(i);
+}
+
+function firstBadVersion(versions, callback) {
+    if (!version.length) return -1 // come back to this;
+    const target = Math.floor(version.length / 2);
+
+    if (callback(versions[target])) {
+        return versions[target];
+    } else {
+        const right = versions.slice(target + 1);
+        return firstBadVersion(right, callback);
+    }
+}
+
+[1,2,3,4,5]
+idx 3
+
+[1,2,3]
+[4,5]
