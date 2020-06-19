@@ -13,4 +13,15 @@ class Bench < ApplicationRecord
 
     validates :description, :lat, :lng, presence: true
     
+    def self.in_bounds(bounds) 
+        debugger
+        northeast = bounds["northEast"]
+        southwest = bounds["southWest"]
+
+        bounded = Bench
+            .where("lat < ? AND lat > ?", northeast["lat"], southwest["lat"])
+            .where("lng < ? AND lng < ?", northeast["lng"], southwest["lng"])
+
+        bounded
+    end
 end
