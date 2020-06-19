@@ -18,3 +18,22 @@
     width: 500px;
     height: 500px;
 }
+
+section {
+    width: 90%;
+    margin: 30px auto;
+}
+
+.main-map {
+    display: flex;;
+}
+
+nav {
+    width: 90%;
+    margin: 0 auto;
+}
+
+form > label {
+    display: block;
+    margin: 10px 0;
+}

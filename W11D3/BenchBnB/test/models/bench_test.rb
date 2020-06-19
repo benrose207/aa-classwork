@@ -8,6 +8,7 @@
 #  lng         :float            not null
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
+#  seating     :integer
 #
 require 'test_helper'
 

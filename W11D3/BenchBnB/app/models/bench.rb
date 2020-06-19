@@ -8,19 +8,19 @@
 #  lng         :float            not null
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
+#  seating     :integer
 #
 class Bench < ApplicationRecord
 
     validates :description, :lat, :lng, presence: true
     
     def self.in_bounds(bounds) 
-        debugger
         northeast = bounds["northEast"]
         southwest = bounds["southWest"]
 
         bounded = Bench
             .where("lat < ? AND lat > ?", northeast["lat"], southwest["lat"])
-            .where("lng < ? AND lng < ?", northeast["lng"], southwest["lng"])
+            .where("lng < ? AND lng > ?", northeast["lng"], southwest["lng"])
 
         bounded
     end

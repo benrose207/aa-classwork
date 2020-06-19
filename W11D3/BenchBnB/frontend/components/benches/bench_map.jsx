@@ -1,5 +1,6 @@
 import React from "react";
 import MarkerManager from "../../util/marker_manager";
+import { withRouter } from "react-router-dom";
 
 class BenchMap extends React.Component {
 
@@ -22,9 +23,18 @@ class BenchMap extends React.Component {
                 northEast: { lat: ne.lat(), lng: ne.lng() },
                 southWest: { lat: sw.lat(), lng: sw.lng() }
             }
-
-            this.props.updateBounds(bounds)
+            
+            this.props.updateFilter(bounds)
         })
+
+        this.map.addListener("click", (e) => this._handleclick(e.latLng))
+    }
+
+    _handleclick(coords) {
+        this.props.history.push({
+            pathname: "benches/new",
+            search: `lat=${coords.lat()}&lng=${coords.lng()}`
+        });
     }
 
     componentDidUpdate() {
@@ -32,11 +42,14 @@ class BenchMap extends React.Component {
     }
 
     render() {
-        // what is "ref" doing below? Something to do with getting the right element from the DOM?
         return (
-            <div id="map-container" ref={ map => this.mapNode = map }></div>
+            <div 
+                id="map-container" 
+                ref={ map => this.mapNode = map }
+            >
+            </div>
         )
     }
 }
 
-export default BenchMap
+export default withRouter(BenchMap);
