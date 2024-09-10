@@ -9,7 +9,7 @@
     "react": "^15.6.2",
     "react-dom": "^15.6.2",
     "react-redux": "^5.1.1",
-    "react-router-dom": "^4.3.1",
+    "react-router-dom": "^6.26.2",
     "redux": "^3.7.2",
     "redux-logger": "^3.0.6",
     "webpack": "^5.94.0",
